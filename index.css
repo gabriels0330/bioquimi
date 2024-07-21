@@ -9,6 +9,10 @@
     padding: 0px;
     box-sizing: border-box;
 }
+#what_is_it > h1{
+    text-align: center;
+    margin-top: 200px;
+    font-family: var(--roboto_font);
 
 #content {
     margin: auto;
