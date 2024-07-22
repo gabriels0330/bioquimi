@@ -14,11 +14,11 @@ section > h1{
     margin-top: 200px;
     font-family: var(--roboto_font);
 }
-#whats_is_it{
+#whats_is{
     margin: 30px;
     max-width:300px;
 }
-#whats_is_it > p{
+#whats_is > p{
     margin: auto;
     font-family :var(--roboto_font);
     max-width: 300px;
