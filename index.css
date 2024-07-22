@@ -20,7 +20,7 @@ section > h1{
 }
 #whats_is_it > p{
     font-family :var(--roboto_font);
-    max-width: 600px;
+    max-width: 300px;
 }
 
 #content {
