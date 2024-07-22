@@ -1,27 +1,56 @@
+/* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:wght@900&display=swap');
 
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Root variables */
 :root {
     --roboto_font: "Roboto Mono", monospace;
 }
 
-* {
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
+/* Header styles */
+header {
+    display: flex;
+    width: 100%;
+    height: auto;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 1px solid black;
+    background: white;
 }
-section > h1{
+
+header > nav > picture > img {
+    width: 220px;
+    height: auto;
+    margin: 0;
+}
+
+nav {
+    text-align: center;
+}
+
+/* Main content section */
+section > h1 {
     text-align: center;
     margin-top: 200px;
     font-family: var(--roboto_font);
 }
-#whats_is{
+
+#whats_is {
     margin: 30px;
-    max-width:300px;
+    max-width: 300px;
 }
-#whats_is > p{
-    text-align:center;
+
+#whats_is > p {
+    text-align: center;
     margin: auto;
-    font-family :var(--roboto_font);
+    font-family: var(--roboto_font);
     max-width: 300px;
 }
 
@@ -37,6 +66,53 @@ section > h1{
     max-width: 1090px;
 }
 
+/* Responsive adjustments */
+@media (max-width: 1028px) {
+    #content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header > nav > picture > img {
+        width: 15vw;
+        height: auto;
+        margin: auto;
+    }
+
+    div {
+        order: 1;
+        width: 100%;
+    }
+
+    #box_2 {
+        order: 2;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        height: auto;
+    }
+
+    #box_2 > p {
+        font-size: large;
+        margin-bottom: 15px;
+    }
+
+    #box_2 > button {
+        width: 70px;
+        height: 40px;
+    }
+
+    #box_2 > button > a {
+        line-height: 40px;
+    }
+}
+
+/* Box 2 styles */
 #box_2 {
     display: flex;
     flex-direction: column;
@@ -76,27 +152,7 @@ section > h1{
     line-height: 50px;
 }
 
-header {
-    display: flex;
-    width: 100%;
-    height: auto;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    border-bottom: 1px solid black;
-    background: white;
-}
-
-header > nav > picture > img {
-    width: 220px;
-    height: auto;
-    margin: 0px;
-}
-
-nav {
-    text-align: center;
-}
-
+/* Image container */
 div > img {
     width: 100%;
     max-width: 400px;
@@ -109,48 +165,4 @@ div {
     align-items: center;
     width: 40vw;
     height: 50vh;
-}
-
-@media (max-width: 1028px) {
-    #content {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    header > nav > picture > img {
-        width: 15vw;
-        height: auto;
-        margin: auto;
-    }
-
-    div {
-        order: 1;
-        width: 100%;
-    }
-
-    #box_2 {
-        order: 2;
-        width: 100%;
-        align-items: center;
-        justify-content: center;
-    }
-}
-
-@media (max-width: 768px) {
-    header{
-        height: auto;
-    }
-    #box_2 > p {
-        font-size: large;
-        margin-bottom: 15px;
-    }
-
-    #box_2 > button {
-        width: 70px;
-        height: 40px;
-    }
-
-    #box_2 > button > a {
-        line-height: 40px;
-    }
 }
