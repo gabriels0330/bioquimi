@@ -19,6 +19,7 @@ section > h1{
     max-width:300px;
 }
 #whats_is > p{
+    text-align:center;
     margin: auto;
     font-family :var(--roboto_font);
     max-width: 300px;
