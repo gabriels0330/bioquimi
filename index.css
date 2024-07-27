@@ -17,7 +17,6 @@
 header {
     display: flex;
     width: 100%;
-    height: auto;
     position: sticky;
     top: 0;
     z-index: 10;
@@ -35,7 +34,55 @@ nav {
     text-align: center;
 }
 
+/* Box 2 styles */
+#box_2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40vw;
+    height: 50vh;
+}
+
+#box_2 > p {
+    font-family: var(--roboto_font);
+    font-size: xx-large;
+    font-weight: bolder;
+    margin-bottom: 20px;
+}
+
+#box_2 > button {
+    display: inline-block;
+    border: none;
+    background: black;
+    text-align: center;
+    border-radius: 30px;
+    cursor: pointer;
+    width: 90px;
+    height: 50px;
+    margin-top: 10px;
+}
+
+#box_2 > button > a {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    line-height: 50px;
+}
+
 /* Main content section */
+#content {
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row-reverse;
+    flex-wrap: nowrap;
+    height: auto;
+    width: 100%;
+    max-width: 1090px;
+}
+
 section > h1 {
     text-align: center;
     margin-top: 200px;
@@ -54,16 +101,19 @@ section > h1 {
     max-width: 300px;
 }
 
-#content {
-    margin: auto;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: row-reverse;
-    flex-wrap: nowrap;
-    height: auto;
+/* Image container */
+div > img {
     width: 100%;
-    max-width: 1090px;
+    max-width: 400px;
+    height: auto;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    height: 50vh;
 }
 
 /* Responsive adjustments */
@@ -75,7 +125,6 @@ section > h1 {
 
     header > nav > picture > img {
         width: 15vw;
-        height: auto;
         margin: auto;
     }
 
@@ -110,59 +159,4 @@ section > h1 {
     #box_2 > button > a {
         line-height: 40px;
     }
-}
-
-/* Box 2 styles */
-#box_2 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 40vw;
-    height: 50vh;
-}
-
-#box_2 > p {
-    font-family: var(--roboto_font);
-    font-size: xx-large;
-    font-weight: bolder;
-    margin-bottom: 20px;
-}
-
-#box_2 > button {
-    display: inline-block;
-    border: none;
-    background: black;
-    text-align: center;
-    border-radius: 30px;
-    cursor: pointer;
-    width: 90px;
-    height: 50px;
-    margin-top: 10px;
-}
-
-#box_2 > button > a {
-    float: none;
-    display: inline-block;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    text-align: center;
-    color: white;
-    line-height: 50px;
-}
-
-/* Image container */
-div > img {
-    width: 100%;
-    max-width: 400px;
-    height: auto;
-}
-
-div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40vw;
-    height: 50vh;
 }
