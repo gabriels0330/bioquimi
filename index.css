@@ -99,6 +99,7 @@ section > h1 {
     margin: auto;
     font-family: var(--roboto_font);
     max-width: 300px;
+    margin:auto;
 }
 
 /* Image container */
