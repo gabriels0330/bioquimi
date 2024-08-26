@@ -23,8 +23,8 @@ header h2 {
 
 .content {
     display: grid;
-    grid-template-columns: repeat(3, 185px);
-    grid-template-rows: repeat(3, 185px);
+    grid-template-columns: repeat(2, 185px);
+    grid-template-rows: repeat(2, 185px);
     grid-column-gap: 2rem;
     grid-row-gap: 2rem;
     text-align: center;
@@ -72,6 +72,6 @@ header h2 {
     .content {
         margin: auto;
         grid-template-columns: repeat(2, 178px);
-        grid-template-rows: repeat(3, 178px);
+        grid-template-rows: repeat(2, 178px);
     }
 }

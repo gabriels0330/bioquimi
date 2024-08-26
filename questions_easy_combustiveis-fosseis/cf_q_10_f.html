@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../our_logos/favicon_logos(1)/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="for_quiz.css">
+    <script src="for_quiz.js"></script>
+
+    <title> Combustiveís fósseis | Quiz | Bioquimi </title>
+</head>
+<body>
+
+    <header>
+        <h1> O QUE É O EFEITO ESTUFA E COMO ELE ESTÁ RELACIONADO AOS COMBUSTÍVEIS FÓSSEIS? </h1>
+
+        <div class="results">
+            <div class="result-item">Acertos: <span id="correctCount">0</span>/15</div>
+            <div class="result-item">Respondidas: <span id="totalAnswered">0</span>/15</div>
+        </div>
+
+    </header>
+    <section>
+        <div class="container">
+            <div class="cards" data-answer="incorrect">
+                <img src="../imagens de alternativas/dioxido de enxofre.png" alt="Dióxido de enxofre">
+                <p>Um fenômeno natural que causa a produção de oxigênio</p>
+            </div>
+
+            <div class="cards" data-answer="correct">
+                <img src="../imagens de alternativas/dioxido de nitrogenio.png" alt="Dióxido de nitrogênio">
+                <p>O efeito causado pelo aumento da temperatura da Terra devido ao acúmulo de gases como CO2</p>
+            </div>
+
+            <div class="cards" data-answer="incorrect">
+                <img src="../imagens de alternativas/monoxido de carbono.png" alt="Monóxido de carbono">
+                <p>A absorção de luz solar pelas plantas</p>
+            </div>
+
+            <div class="cards" data-answer="incorrect">
+                <img src="../imagens de alternativas/metano.png" alt="Metano">
+                <p>A produção de energia solar</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="check">
+        <div id="bolaContainer"></div>
+        <div id="explica"><p></p></div>
+        <button id="next" type="button" disabled>CONFERIR</button>
+    </div>
+
+    <audio id="audioCorrect" src="../imagens de alternativas/level-passed-142971.mp3"></audio>
+    <audio id="audioIncorrect" src="../imagens de alternativas/derrota.mp3"></audio>
+</body>
+</html>

@@ -1,6 +1,8 @@
 function selectTheme(theme) {
-    localStorage.setItem('selectedTheme', theme);
-     window.location.href = 'level.html';
+  localStorage.setItem('selectedTheme', theme);
+  const folderPath = `questions_easy_${theme}/`;
+  const fileName = `${theme}_quiz_1_easy.html`;
+  window.location.href = folderPath + fileName;
 }
 
 function navigateTo(page) {
