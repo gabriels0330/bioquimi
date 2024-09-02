@@ -132,15 +132,9 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             if (totalAnswered >= 15) {
                 // Todas as perguntas foram respondidas, redireciona para a página apropriada
-                if (correctCount <= 5) {
+                
                     window.location.href = 'bronze.html';
-                } else if (correctCount <= 10) {
-                    window.location.href = 'prata.html';
-                } else if (correctCount <= 14) {
-                    window.location.href = 'm-ouro.html';
-                } else if (correctCount == 15) {
-                    window.location.href = 'ouro.html';
-                }
+                
             } else {
                 // Incrementa o número da questão
                 questionNumber++;
@@ -157,6 +151,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Manipulador para eventos de navegação
     window.addEventListener('popstate', (event) => {
-        window.location.href = '/level.html';
+        window.location.href = '/topico.html';
     });
 });
