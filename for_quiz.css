@@ -205,6 +205,9 @@ section{
 }
 
 @media (max-width: 640px) {
+    header  h1{
+        font-size: 25px;
+    }
     .container {
         display: grid;
         grid-template-columns: repeat(2, 150px);
