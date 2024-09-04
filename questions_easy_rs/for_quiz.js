@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
             history.pushState(null, '', window.location.href);
         } else {
             // Se o usuário confirmar, permite a navegação
-            window.location.href = '/level.html'; // ou outra URL de destino
+            window.location.href = '../topico.html'; // ou outra URL de destino
         }
     });
 });
