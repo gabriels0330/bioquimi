@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
+:root{
+    --roboto_mono: "Roboto Mono", monospace;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: var(--roboto_mono);
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+header{
+    display: flex;
+    margin: 30px;
+    font-size: small;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: repeat(4, 250px);
+    grid-template-rows: repeat(1, 255px);
+    grid-column-gap: 5vw;
+    grid-row-gap: 2vh;
+}
+
+.cards{
+    border-radius: 20px;
+    border: 1px solid black;
+    cursor: pointer;
+    padding: 10%;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.cards img{
+    border-radius: 20px;
+    width: 120px;
+    height: auto;
+}
+
+.cards p{
+    margin-top: 10px;
+}
+
+.cards:hover{
+    transform: scale(1.1);
+}
+
+.check{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    padding: 20px;
+    border-top: 1px solid black;
+    background-color: white;
+    margin-top: 5px;
+}
+
+.bola {
+    width: 80px;
+    height: 80px;
+    background-color: #4caf50; /* Cor de fundo da bola */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin: 10px;
+    padding: 15px;
+}
+
+.checked {
+    color: white;
+    font-size: 40px;
+    font-family: Arial, sans-serif;
+}
+
+.erro {
+    width: 80px;
+    height: 80px;
+    background-color: #f44336; /* Cor de fundo da bola para erro */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin: 10px;
+    padding: 15px;
+}
+
+.error-mark {
+    color: white;
+    font-size: 40px;
+    font-family: Arial, sans-serif;
+
+}
+
+#next{
+    margin: 10px;
+    background-color: #ccc;
+    padding: 15px;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    cursor: default;
+}
+#explica{
+    display: none;
+}
+.enabled {
+    cursor: pointer;
+}
+
+.correct {
+    background-color: rgb(76, 198, 76) !important;
+    color: white;
+}
+
+.incorrect {
+    background-color: rgb(245, 46, 46) !important;
+    color: white;
+}
+
+.correct .cards,
+.incorrect .cards {
+    color: white;
+}
+
+.selected {
+    background-color: #ccc;
+    outline: 1px solid black;
+}
+
+.results {
+    display: flex;
+    justify-content: space-around;
+}
+
+.result-item {
+    margin: 5px 0;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+@media (max-width: 1225px) {
+    .container {
+        grid-template-columns: repeat(2, 200px);
+        grid-template-rows: auto;
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+    }
+
+    .cards {
+        padding: 5%;
+    }
+
+    .cards img {
+        width: 100px;
+    }
+
+    .check {
+        flex-direction: row;
+        padding: 10px;
+    }
+
+    .bola, .erro {
+        width: 60px;
+        height: 60px;
+        font-size: 30px;
+    }
+
+    .checked, .error-mark {
+        font-size: 30px;
+    }
+
+    #next {
+        padding: 10px;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 640px) {
+    .container {
+        display: grid;
+        grid-template-columns: repeat(2, 150px);
+        grid-template-rows: repeat(2, 150px); /* Três linhas para os cards */
+        grid-gap: 10px;
+    }
+
+    .cards img {
+        width: 80px;
+    }
+    .cards p{
+        font-size:5%;
+    }
+    .bola, .erro {
+        width: 50px;
+        height: 50px;
+    }
+    .checked, .error-mark {
+        font-size: 20px;
+    }
+    #explica p{
+        font-size: 4%;
+    }
+    #next {
+        padding: 5px;
+        margin-top: 8px;
+        width: 100px;
+        height: 40px;
+    }
+}
