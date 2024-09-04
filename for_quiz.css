@@ -216,7 +216,8 @@ section{
         width: 80px;
     }
     .cards p{
-        font-size:10px;
+        font-size:11px;
+        font-weight: bold ;
     }
     .bola, .erro {
         width: 50px;
