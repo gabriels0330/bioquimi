@@ -10,19 +10,33 @@ document.addEventListener('DOMContentLoaded', () => {
     let selectedCard = null;
     let questionChecked = false; // Estado para verificar se a pergunta já foi conferida
 
-    // Verifica se a URL contém o parâmetro "quiz_1"
-    if (window.location.href.includes("?quiz_1")) {
+    // Função para obter o nome do arquivo da URL atual
+    const getFileNameFromUrl = () => {
+        const url = window.location.pathname;
+        return url.substring(url.lastIndexOf('/') + 1);
+    };
+
+    // Função para zerar os contadores
+    const resetCounters = () => {
         localStorage.removeItem('correctCount');
         localStorage.removeItem('totalAnswered');
         localStorage.removeItem('currentQuestionNumber');
+        document.getElementById('correctCount').textContent = 0;
+        document.getElementById('totalAnswered').textContent = 0;
+    };
+
+    // Verifica se o nome do arquivo é 'rs_quiz_1_easy.html'
+    if (getFileNameFromUrl() === 'efeito-estufa_quiz_1_easy.html') {
+        // Zera os contadores se o nome do arquivo corresponde
+        resetCounters();
     }
 
     // Verifica se a página foi recarregada
     if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
         // Se a página foi recarregada, zera os contadores e redireciona para a primeira página
-        localStorage.removeItem('correctCount');
-        localStorage.removeItem('totalAnswered');
-        localStorage.removeItem('currentQuestionNumber');
+        if (getFileNameFromUrl() === 'efeito-estufa_quiz_1_easy.html') {
+            resetCounters();
+        }
         window.location.href = 'efeito-estufa_quiz_1_easy.html';
     }
 
@@ -132,9 +146,15 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             if (totalAnswered >= 15) {
                 // Todas as perguntas foram respondidas, redireciona para a página apropriada
-                
+                if (correctCount <= 5) {
                     window.location.href = 'bronze.html';
-                
+                } else if (correctCount <= 10) {
+                    window.location.href = 'prata.html';
+                } else if (correctCount <= 14) {
+                    window.location.href = 'm-ouro.html';
+                } else if (correctCount == 15) {
+                    window.location.href = 'ouro.html';
+                }
             } else {
                 // Incrementa o número da questão
                 questionNumber++;
@@ -151,6 +171,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Manipulador para eventos de navegação
     window.addEventListener('popstate', (event) => {
-        window.location.href = '/topico.html';
+        window.location.href = '/level.html';
     });
 });
