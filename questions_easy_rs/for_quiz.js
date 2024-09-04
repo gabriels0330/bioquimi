@@ -171,6 +171,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Manipulador para eventos de navegação
     window.addEventListener('popstate', (event) => {
-        window.location.href = '/level.html';
+        // Pergunta de confirmação ao voltar para uma página anterior
+        const userConfirmed = window.confirm("Você tem certeza de que deseja sair do jogo? Seu progresso pode ser perdido.");
+        if (!userConfirmed) {
+            // Se o usuário não confirmar, previne a navegação
+            history.pushState(null, '', window.location.href);
+        } else {
+            // Se o usuário confirmar, permite a navegação
+            window.location.href = '/level.html'; // ou outra URL de destino
+        }
     });
 });
