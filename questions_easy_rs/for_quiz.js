@@ -10,34 +10,20 @@ document.addEventListener('DOMContentLoaded', () => {
     let selectedCard = null;
     let questionChecked = false; // Estado para verificar se a pergunta já foi conferida
 
-    // Função para obter o nome do arquivo da URL atual
-    const getFileNameFromUrl = () => {
-        const url = window.location.pathname;
-        return url.substring(url.lastIndexOf('/') + 1);
-    };
-
-    // Função para zerar os contadores
-    const resetCounters = () => {
+    // Verifica se a URL contém o parâmetro "quiz_1"
+    if (window.location.href.includes("?quiz_1")) {
         localStorage.removeItem('correctCount');
         localStorage.removeItem('totalAnswered');
         localStorage.removeItem('currentQuestionNumber');
-        document.getElementById('correctCount').textContent = 0;
-        document.getElementById('totalAnswered').textContent = 0;
-    };
-
-    // Verifica se o nome do arquivo é 'rs_quiz_1_easy.html'
-    if (getFileNameFromUrl() === 'rs_quiz_1_easy.html') {
-        // Zera os contadores se o nome do arquivo corresponde
-        resetCounters();
     }
 
     // Verifica se a página foi recarregada
     if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
         // Se a página foi recarregada, zera os contadores e redireciona para a primeira página
-        if (getFileNameFromUrl() === 'rs_quiz_1_easy.html') {
-            resetCounters();
-        }
-        window.location.href = 'rs_quiz_1_easy.html';
+        localStorage.removeItem('correctCount');
+        localStorage.removeItem('totalAnswered');
+        localStorage.removeItem('currentQuestionNumber');
+        window.location.href = 'rs_quiz_1_medium.html';
     }
 
     // Recupera os valores de acertos e perguntas respondidas do localStorage ou inicia com 0
@@ -161,24 +147,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.setItem('currentQuestionNumber', questionNumber);
 
                 // Adiciona o número da questão no histórico
-                history.pushState({ questionNumber }, '', `rs_q_${questionNumber}_f.html`);
+                history.pushState({ questionNumber }, '', `rs_q_${questionNumber}_m.html`);
 
                 // Redireciona para a próxima página
-                window.location.href = `rs_q_${questionNumber}_f.html`;
+                window.location.href = `rs_q_${questionNumber}_m.html`;
             }
         }
     });
 
     // Manipulador para eventos de navegação
     window.addEventListener('popstate', (event) => {
-        // Pergunta de confirmação ao voltar para uma página anterior
-        const userConfirmed = window.confirm("Você tem certeza de que deseja sair do jogo? Seu progresso pode ser perdido.");
-        if (!userConfirmed) {
-            // Se o usuário não confirmar, previne a navegação
-            history.pushState(null, '', window.location.href);
-        } else {
-            // Se o usuário confirmar, permite a navegação
-            window.location.href = '../topico.html'; // ou outra URL de destino
-        }
+        window.location.href = '/level.html';
     });
 });
