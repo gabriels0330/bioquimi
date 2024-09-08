@@ -357,44 +357,68 @@ body, html {
             <img src="../imagens de alternativas/dioxido-enx-trans.png" alt="">
         </div>
     </div>
+
+    <audio id="background-music" src="../imagens de alternativas/final.mp3"></audio>
+
     <script>
 // Função para criar confetes
-function createConfetti() {
-    const confettiContainer = document.createElement('div');
-    confettiContainer.className = 'confetti-container';
-    document.body.appendChild(confettiContainer);
 
-    const numberOfConfetti = 100;
-    for (let i = 0; i < numberOfConfetti; i++) {
-        const confetti = document.createElement('div');
-        confetti.className = 'confetti';
-        confetti.style.left = `${Math.random() * 100}vw`;
-        confetti.style.top = `${Math.random() * -100}vh`; // Começa acima da tela
-        confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
-        confetti.style.animationDelay = `${Math.random() * 5}s`;
-        confettiContainer.appendChild(confetti);
-    }
+      // Função para criar confetes
+      function createConfetti() {
+            const confettiContainer = document.createElement('div');
+            confettiContainer.className = 'confetti-container';
+            document.body.appendChild(confettiContainer);
 
-    // Remove os confetes após a animação
-    setTimeout(() => {
-        document.body.removeChild(confettiContainer);
-    }, 7000); // Tempo suficiente para garantir que os confetes terminem a animação
-}
+            const numberOfConfetti = 100;
+            for (let i = 0; i < numberOfConfetti; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = `${Math.random() * 100}vw`;
+                confetti.style.top = `${Math.random() * -100}vh`;
+                confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                confetti.style.animationDelay = `${Math.random() * 5}s`;
+                confettiContainer.appendChild(confetti);
+            }
 
-// Adiciona os confetes quando a página carrega
-window.addEventListener('load', createConfetti);
+            // Remove os confetes após a animação
+            setTimeout(() => {
+                document.body.removeChild(confettiContainer);
+            }, 7000);
+        }
 
-// Recupera o valor de acertos e perguntas respondidas do localStorage
-const correctCount = parseInt(localStorage.getItem('correctCount')) || 0;
-const totalAnswered = parseInt(localStorage.getItem('totalAnswered')) || 0;
+        // Adiciona os confetes quando a página carrega
+        window.addEventListener('load', createConfetti);
 
-// Obtém o elemento onde a pontuação será exibida
-const finalScoreElement = document.getElementById('finalScore');
+        // Recupera o valor de acertos e perguntas respondidas do localStorage
+        const correctCount = parseInt(localStorage.getItem('correctCount')) || 0;
+        const totalAnswered = parseInt(localStorage.getItem('totalAnswered')) || 0;
 
-// Atualiza o texto ado elemento com a pontuação final
-finalScoreElement.textContent = `Acertos: ${correctCount} de ${totalAnswered}`;
+        // Obtém o elemento onde a pontuação será exibida
+        const finalScoreElement = document.getElementById('finalScore');
 
+        // Atualiza o texto ado elemento com a pontuação final
+        finalScoreElement.textContent = `Acertos: ${correctCount} de ${totalAnswered}`;
 
+        // Função para tocar a música
+        function playMusic() {
+            const audio = document.getElementById('background-music');
+            audio.currentTime = 0; // Reinicia a música
+            audio.play().catch((error) => {
+                console.log('Erro ao tentar tocar o áudio automaticamente:', error);
+            });
+        }
+
+        // Força a música a tocar ao recarregar a página
+        window.addEventListener('load', () => {
+            playMusic();
+        });
+
+        // Garante que a música seja tocada sempre que a página for recarregada
+        document.addEventListener('visibilitychange', function () {
+            if (document.visibilityState === 'visible') {
+                playMusic(); // Reproduz a música quando a aba ficar visível novamente
+            }
+        });
     </script>
 </body>
 </html>

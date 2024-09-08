@@ -93,7 +93,7 @@ body, html {
         transform: scale(1);
     }
     50%{
-        transform: scale(1.5);
+        transform: scale(1.2);
     }
     100%{
         transform: scale(1);
@@ -357,6 +357,9 @@ body, html {
             <img src="../imagens de alternativas/dioxido-enx-trans.png" alt="">
         </div>
     </div>
+    
+    <audio id="background-music" src="../imagens de alternativas/final.mp3" autoplay></audio>
+
     <script>
 // Função para criar confetes
 function createConfetti() {
@@ -394,6 +397,10 @@ const finalScoreElement = document.getElementById('finalScore');
 // Atualiza o texto ado elemento com a pontuação final
 finalScoreElement.textContent = `Acertos: ${correctCount} de ${totalAnswered}`;
 
+window.addEventListener('load', () => {
+    const audio = document.getElementById('background-music');
+    audio.play();
+});
 
     </script>
 </body>

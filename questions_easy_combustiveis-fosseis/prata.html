@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../our_logos/favicon_logos(1)/favicon.ico" type="image/x-icon">
-    <title>Campeão | Bioquimi</title>
+    <title>Página de Teste</title>
     <style>
 /* Estilos gerais */
 * {
@@ -329,7 +328,7 @@ body, html {
         </div>
 
         <div class="score-container">
-            <h2>Quase lá.</h2>
+            <h2>Pontuação Final</h2>
             <p id="finalScore">0</p>
         </div>
         
@@ -361,6 +360,9 @@ body, html {
             <img src="../imagens de alternativas/dioxido-enx-trans.png" alt="">
         </div>
     </div>
+
+    <audio id="background-music" src="../imagens de alternativas/final.mp3" autoplay></audio>
+
     <script>
 // Função para criar confetes
 function createConfetti() {
@@ -398,7 +400,10 @@ const finalScoreElement = document.getElementById('finalScore');
 // Atualiza o texto ado elemento com a pontuação final
 finalScoreElement.textContent = `Acertos: ${correctCount} de ${totalAnswered}`;
 
-
+window.addEventListener('load', () => {
+    const audio = document.getElementById('background-music');
+    audio.play();
+});
     </script>
 </body>
 </html>

@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../our_logos/favicon_logos(1)/favicon.ico" type="image/x-icon">
-    <title>Campeão | Bioquimi</title>
+    <title>Página de Teste</title>
     <style>
 /* Estilos gerais */
 * {
@@ -93,7 +92,7 @@ body, html {
         transform: scale(1);
     }
     50%{
-        transform: scale(1.05);
+        transform: scale(1.5);
     }
     100%{
         transform: scale(1);
@@ -320,12 +319,12 @@ body, html {
     <div class="container">
         <div class="stars">
             <span class="star medium bronze">
-                <img src="../imagens de alternativas/proudness.png" alt="">
+                <img src="../imagens de alternativas/star-bronze_1.png" alt="">
             </span>
         </div>
 
         <div class="score-container">
-            <h2>Todo mundo começa de <br> algum lugar.</h2>
+            <h2>Pontuação Final</h2>
             <p id="finalScore">0</p>
         </div>
         
@@ -357,12 +356,8 @@ body, html {
             <img src="../imagens de alternativas/dioxido-enx-trans.png" alt="">
         </div>
     </div>
-
-    <audio id="background-music" src="../imagens de alternativas/final.mp3" autoplay></audio>
-
     <script>
 // Função para criar confetes
-
 function createConfetti() {
     const confettiContainer = document.createElement('div');
     confettiContainer.className = 'confetti-container';
@@ -384,6 +379,7 @@ function createConfetti() {
         document.body.removeChild(confettiContainer);
     }, 7000); // Tempo suficiente para garantir que os confetes terminem a animação
 }
+
 // Adiciona os confetes quando a página carrega
 window.addEventListener('load', createConfetti);
 

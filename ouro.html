@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Teste</title>
+    <link rel="shortcut icon" href="../our_logos/favicon_logos(1)/favicon.ico" type="image/x-icon">
+    <title>Campeão | Bioquimi</title>
     <style>
 /* Estilos gerais */
 * {
@@ -12,21 +13,24 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
     display: flex;
     justify-content: center;
+    background: linear-gradient(45deg, rgb(84, 147, 121), #88C5AC);
+    overflow: hidden;
     align-items: center;
-    height: 100vh;
-    background-color: rgb(238, 255, 0);
-    overflow: hidden; /* Impede a rolagem para que os confetes não causem problemas */
+    position: relative;
 }
 
-.container {
-    text-align: center;
-    margin-bottom: 50px;
-    width: 50vw;
-    background-color: white;
+@keyframes fadeIn {
+    to {
+        opacity: 1; /* Torna os elementos visíveis */
+    }
 }
 
 /* Estilos para as estrelas */
@@ -34,11 +38,12 @@ body {
     display: flex;
     justify-content: center;
     position: relative;
-    align-items: center;
     margin-bottom: 10vw;
-    width: 25vw;
+    animation: moviment 2s infinite;
 }
-
+.container{
+    z-index: 1;
+}
 .star {
     display: inline-block;
     top: -30px;
@@ -89,16 +94,27 @@ body {
     from { opacity: 0; transform: scale(0.5); }
     to { opacity: 1; transform: scale(1); }
 }
-
+@keyframes moviment{
+    0%, 100% {
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.1);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
 /* Estilos para o troféu */
 .trophy {
+    display: flex;
+    justify-content: center;
+    position: relative;
     margin-top: 10px;
-    animation: swing 2s infinite; /* Adiciona a animação de balanço */
 }
 
 .trophy-icon img {
     width: 200px;
-    
 }
 
 /* Animação de balanço */
@@ -207,32 +223,147 @@ body {
     }
 }
 
+.atom, .molecule {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    opacity: 0.6;
+    animation: float 15s infinite ease-in-out;
+}
 
+.atom {
+    width: 50px;
+    height: 50px;
+    background: #ffcc00;
+    top: 20%;
+    left: 30%;
+}
+
+.molecule {
+    width: 80px;
+    height: 80px;
+    background: #ff6600;
+    top: 50%;
+    left: 60%;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px) translateX(0px);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translateY(-30px) translateX(30px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0px) translateX(0px);
+        opacity: 0.7;
+    }
+}
+.atom img{
+    width: 50px;
+    height: 50px;
+}
+
+.molecule img{
+    width: 80px;
+    height: 80px;
+}
+.atom:nth-child(1) {
+    animation-duration: 10s;
+    top: 10%;
+    left: 40%;
+}
+
+.molecule:nth-child(2) {
+    animation-duration: 20s;
+    top: 30%;
+    left: 70%;
+}
+
+.atom:nth-child(3) {
+    animation-duration: 15s;
+    top: 60%;
+    left: 20%;
+}
+
+.molecule:nth-child(4) {
+    animation-duration: 12s;
+    top: 80%;
+    left: 50%;
+}
+
+.atom:nth-child(5) {
+    animation-duration: 18s;
+    top: 40%;
+    left: 10%;
+}
+
+.score-container {
+    text-align: center;
+    margin: 20px 0;
+    color: #333;
+}
+
+#finalScore {
+    font-size: 24px;
+    font-weight: bold;
+}
     </style>
 </head>
 <body>
     <div class="container">
         <div class="stars">
             <span class="star medium bronze">
-                <img src="imagens de alternativas/bronze-star.png" alt="">
+                <img src="../imagens de alternativas/star-bronze_1.png" alt="">
             </span>
 
             <span class="star small silver">
-                <img src="imagens de alternativas/silver-star.png" alt="">
+                <img src="../imagens de alternativas/star_silver_1.png" alt="">
             </span>
 
             <span class="star big yellow">
-                <img src="imagens de alternativas/gold-star.png" alt="">
+                <img src="../imagens de alternativas/star-gold-1.png" alt="">
             </span>
         </div>
 
+        <div class="score-container">
+            <h2>Aqui já foi.</h2>
+            <p id="finalScore">0</p>
+        </div>
+        
         <div class="trophy">
             <span class="trophy-icon">
-                <img src="imagens de alternativas/trofeu.png" alt="">
+                <img src="../imagens de alternativas/winner-1.png" alt="">
             </span>
         </div>
-        <button class="test-button" onclick="testarConhecimentos()">TESTAR OUTROS CONHECIMENTOS</button>
+        <button class="test-button" onclick="window.location.href='../topico.html'">TESTAR OUTROS TÓPICOS 😎 🧪</button>
     </div>
+    <div class="background">
+        <div class="atom">
+            <img src="../imagens de alternativas/dioxido-trans.png" alt="">
+        </div>
+
+        <div class="molecule">
+            <img src="../imagens de alternativas/nitroso-trans.png" alt="">
+        </div>
+
+        <div class="atom">
+            <img src="../imagens de alternativas/dioxido-car-trans.png" alt="">
+        </div>
+
+        <div class="molecule">
+            <img src="../imagens de alternativas/monoxido-trans.png" alt="">
+        </div>
+
+        <div class="atom">
+            <img src="../imagens de alternativas/dioxido-enx-trans.png" alt="">
+        </div>
+    </div>
+
+    <audio id="background-music" src="../imagens de alternativas/final.mp3" autoplay></audio>
 
     <script>
 // Função para criar confetes
@@ -260,6 +391,21 @@ function createConfetti() {
 
 // Adiciona os confetes quando a página carrega
 window.addEventListener('load', createConfetti);
+
+// Recupera o valor de acertos e perguntas respondidas do localStorage
+const correctCount = parseInt(localStorage.getItem('correctCount')) || 0;
+const totalAnswered = parseInt(localStorage.getItem('totalAnswered')) || 0;
+
+// Obtém o elemento onde a pontuação será exibida
+const finalScoreElement = document.getElementById('finalScore');
+
+// Atualiza o texto do elemento com a pontuação final
+finalScoreElement.textContent = `Acertos: ${correctCount} de ${totalAnswered}`;
+
+window.addEventListener('load', () => {
+    const audio = document.getElementById('background-music');
+    audio.play();
+});
 
     </script>
 </body>

@@ -357,8 +357,12 @@ body, html {
             <img src="../imagens de alternativas/dioxido-enx-trans.png" alt="">
         </div>
     </div>
+
+    <audio id="background-music" src="../imagens de alternativas/final.mp3" autoplay></audio>
+
     <script>
 // Função para criar confetes
+
 function createConfetti() {
     const confettiContainer = document.createElement('div');
     confettiContainer.className = 'confetti-container';
@@ -380,7 +384,6 @@ function createConfetti() {
         document.body.removeChild(confettiContainer);
     }, 7000); // Tempo suficiente para garantir que os confetes terminem a animação
 }
-
 // Adiciona os confetes quando a página carrega
 window.addEventListener('load', createConfetti);
 
@@ -394,7 +397,10 @@ const finalScoreElement = document.getElementById('finalScore');
 // Atualiza o texto ado elemento com a pontuação final
 finalScoreElement.textContent = `Acertos: ${correctCount} de ${totalAnswered}`;
 
-
+window.addEventListener('load', () => {
+    const audio = document.getElementById('background-music');
+    audio.play();
+});
     </script>
 </body>
 </html>
