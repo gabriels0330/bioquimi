@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Combinada</title>
+    <style>
+        /* Estilos gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(45deg, rgb(84, 147, 121), #88C5AC);
+            overflow: hidden;
+            z-index: -2; /* Fica atrás dos outros elementos */
+        }
+
+        .background-gold {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: gold;
+            border-radius: 50%;
+            transform: scale(0);
+            animation: expandBackground 2s forwards;
+            z-index: -1; /* Fica atrás dos elementos principais */
+        }
+
+        /* Estilos das estrelas */
+        .stars {
+            display: flex;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 10vw;
+            z-index: 1; /* Fica acima do fundo */
+        }
+
+        .star {
+            display: inline-block;
+            top: -30px;
+            opacity: 0;
+            animation-duration: 1s;
+            animation-fill-mode: forwards;
+        }
+
+        .big {
+            position: absolute;
+            top: -45px;
+            left: 35%;
+            transform: translateX(-50%);
+            animation-name: appear-gold;
+            animation-delay: 2s;
+        }
+
+        .small {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            animation-name: appear-silver;
+            animation-delay: 1s;
+        }
+
+        .medium {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            animation-name: appear-bronze;
+        }
+
+        /* Estilos dos átomos e moléculas */
+        .atom, .molecule {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            opacity: 0.6;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .atom {
+            width: 50px;
+            height: 50px;
+            background: #ffcc00;
+            top: 20%;
+            left: 30%;
+        }
+
+        .molecule {
+            width: 80px;
+            height: 80px;
+            background: #ff6600;
+            top: 50%;
+            left: 60%;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px) translateX(0px);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translateY(-30px) translateX(30px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(0px) translateX(0px);
+                opacity: 0.7;
+            }
+        }
+
+        @keyframes expandBackground {
+            to {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes appear-bronze {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes appear-silver {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes appear-gold {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .trophy {
+            margin-top: 10px;
+            animation: swing 2s infinite;
+            z-index: 1; /* Fica acima do fundo */
+        }
+
+        .trophy-icon img {
+            width: 200px;
+        }
+
+        @keyframes swing {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(10deg);
+            }
+        }
+
+        .test-button {
+            margin-top: 30px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            z-index: 1; /* Fica acima do fundo */
+        }
+
+        .test-button:hover {
+            background-color: #0056b3;
+        }
+
+        .star img {
+            width: 100px;
+        }
+
+        .big img {
+            width: 100px;
+        }
+
+        .small img {
+            width: 100px;
+        }
+
+        .medium img {
+            width: 100px;
+        }
+
+        .atom img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .molecule img {
+            width: 80px;
+            height: 80px;
+        }
+
+        @media (max-width: 670px) {
+            .star img {
+                width: 80px;
+                top: -100px;
+            }
+            .trophy {
+                margin-top: 10px;
+            }
+            .test-button {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .star img {
+                width: 60px;
+            }
+            .trophy-icon img {
+                width: 115px;
+            }
+            .test-button {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-gold"></div> <!-- Fundo dourado -->
+    <div class="background">
+        <div class="atom">
+            <img src="imagens de alternativas/dioxido-trans.png" alt="">
+        </div>
+        <div class="molecule">
+            <img src="imagens de alternativas/nitroso-trans.png" alt="">
+        </div>
+        <div class="atom">
+            <img src="imagens de alternativas/dioxido-car-trans.png" alt="">
+        </div>
+        <div class="molecule">
+            <img src="imagens de alternativas/monoxido-trans.png" alt="">
+        </div>
+        <div class="atom">
+            <img src="imagens de alternativas/dioxido-enx-trans.png" alt="">
+        </div>
+    </div>
+    <div class="stars">
+        <span class="star medium bronze">
+            <img src="imagens de alternativas/star-bronze_1.png" alt="">
+        </span>
+        <span class="star small silver">
+            <img src="imagens de alternativas/star_silver_1.png" alt="">
+        </span>
+        <span class="star big yellow">
+            <img src="imagens de alternativas/star-gold-1.png" alt="">
+        </span>
+    </div>
+    <div class="trophy">
+        <span class="trophy-icon">
+            <img src="imagens de alternativas/winner-1.png" alt="">
+        </span>
+    </div>
+    <button class="test-button" onclick="testarConhecimentos()">TESTAR OUTROS CONHECIMENTOS</button>
+
+    <script>
+        // Função para criar confetes
+        function createConfetti() {
+            const confettiContainer = document.createElement('div');
+            confettiContainer.className = 'confetti-container';
+            document.body.appendChild(confettiContainer);
+        
+            const numberOfConfetti = 100;
+            for (let i = 0; i < numberOfConfetti; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = `${Math.random() * 100}vw`;
+                confetti.style.top = `${Math.random() * -100}vh`; // Começa acima da tela
+                confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                confetti.style.animationDelay = `${Math.random() * 5}s`;
+                confettiContainer.appendChild(confetti);
+            }
+        
+            // Remove os confetes após a animação
+            setTimeout(() => {
+                document.body.removeChild(confettiContainer);
+            }, 7000); // Tempo suficiente para garantir que os confetes terminem a animação
+        }
+        
+        // Adiciona os confetes quando a página carrega
+        window.addEventListener('load', createConfetti);
+        
+        // Função placeholder para o botão
+        function testarConhecimentos() {
+            alert('Botão clicado! Implemente sua lógica aqui.');
+        }
+        </script>
+        
+</body>
+</html>

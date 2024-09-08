@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Teste</title>
+    <style>
+/* Estilos gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgb(238, 255, 0);
+    overflow: hidden; /* Impede a rolagem para que os confetes não causem problemas */
+}
+
+.container {
+    text-align: center;
+    margin-bottom: 50px;
+    width: 50vw;
+    background-color: white;
+}
+
+/* Estilos para as estrelas */
+.stars {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+    margin-bottom: 10vw;
+    width: 25vw;
+}
+
+.star {
+    display: inline-block;
+    top: -30px;
+    opacity: 0; /* Começa invisível */
+    animation-duration: 1s;
+    animation-fill-mode: forwards; /* Mantém o estado final da animação */
+}
+
+/* Estilo específico para a estrela dourada */
+.big {
+    position: absolute;
+    top: -45px; /* Estrela dourada mais alta */
+    left: 35%;
+    transform: translateX(-50%);
+    animation-name: appear-gold;
+    animation-delay: 2s; /* Aparece após a prata */
+}
+
+/* Estilo específico para a estrela prata */
+.small {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    animation-name: appear-silver;
+    animation-delay: 1s; /* Aparece após a bronze */
+}
+
+/* Estilo específico para a estrela bronze */
+.medium {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    animation-name: appear-bronze;
+}
+
+/* Animações */
+@keyframes appear-bronze {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes appear-silver {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes appear-gold {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Estilos para o troféu */
+.trophy {
+    margin-top: 10px;
+    animation: swing 2s infinite; /* Adiciona a animação de balanço */
+}
+
+.trophy-icon img {
+    width: 200px;
+    
+}
+
+/* Animação de balanço */
+@keyframes swing {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(10deg);
+    }
+}
+
+/* Estilos para o botão */
+.test-button {
+    margin-top: 30px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.test-button:hover {
+    background-color: #0056b3;
+}
+
+/* Ajustes de imagem das estrelas */
+.star img {
+    width: 100px; /* Tamanho padrão das estrelas */
+}
+
+.big img {
+    width: 100px; /* Estrela dourada maior */
+}
+
+.small img {
+    width: 100px; /* Estrela prata menor */
+}
+
+.medium img {
+    width: 100px; /* Estrela bronze intermediária */
+}
+
+/* Estilos para os confetes */
+@keyframes confetti-fall {
+    to {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+.confetti {
+    position: absolute;
+    width: 20px; /* Tamanho maior dos confetes */
+    height: 20px;
+    background: #f39c12;
+    opacity: 0.9;
+    animation: confetti-fall 3s infinite;
+    pointer-events: none;
+}
+
+.confetti:nth-child(odd) {
+    background: #e74c3c;
+}
+
+.confetti:nth-child(3n) {
+    background: #2ecc71;
+}
+
+.confetti:nth-child(4n) {
+    background: #3498db;
+}
+
+/* Ajustes para telas menores */
+@media (max-width: 670px) {
+    .star img {
+        width: 80px; /* Ajuste o tamanho das estrelas */
+        top: -100px;
+    }
+    
+    .trophy {
+        margin-top: 10px;
+    }
+    
+    .test-button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .star img {
+        width: 60px; /* Ajuste o tamanho das estrelas para telas muito pequenas */
+    }
+    
+    .trophy-icon img {
+        width: 115px;
+    }
+    
+    .test-button {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="stars">
+            <span class="star medium bronze">
+                <img src="imagens de alternativas/bronze-star.png" alt="">
+            </span>
+
+            <span class="star small silver">
+                <img src="imagens de alternativas/silver-star.png" alt="">
+            </span>
+
+            <span class="star big yellow">
+                <img src="imagens de alternativas/gold-star.png" alt="">
+            </span>
+        </div>
+
+        <div class="trophy">
+            <span class="trophy-icon">
+                <img src="imagens de alternativas/trofeu.png" alt="">
+            </span>
+        </div>
+        <button class="test-button" onclick="testarConhecimentos()">TESTAR OUTROS CONHECIMENTOS</button>
+    </div>
+
+    <script>
+// Função para criar confetes
+function createConfetti() {
+    const confettiContainer = document.createElement('div');
+    confettiContainer.className = 'confetti-container';
+    document.body.appendChild(confettiContainer);
+
+    const numberOfConfetti = 100;
+    for (let i = 0; i < numberOfConfetti; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = `${Math.random() * 100}vw`;
+        confetti.style.top = `${Math.random() * -100}vh`; // Começa acima da tela
+        confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
+        confetti.style.animationDelay = `${Math.random() * 5}s`;
+        confettiContainer.appendChild(confetti);
+    }
+
+    // Remove os confetes após a animação
+    setTimeout(() => {
+        document.body.removeChild(confettiContainer);
+    }, 7000); // Tempo suficiente para garantir que os confetes terminem a animação
+}
+
+// Adiciona os confetes quando a página carrega
+window.addEventListener('load', createConfetti);
+
+    </script>
+</body>
+</html>
