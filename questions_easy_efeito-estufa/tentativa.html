@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../our_logos/favicon_logos(1)/favicon.ico" type="image/x-icon">
+    <title>Campeão | Bioquimi</title>
+    <style>
+/* Estilos gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(45deg, rgb(84, 147, 121), #88C5AC);
+    overflow: hidden;
+    align-items: center;
+    position: relative;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1; /* Torna os elementos visíveis */
+    }
+}
+
+/* Estilos para as estrelas */
+.stars {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 10vw;
+    animation: moviment 2s infinite;
+}
+.container{
+    z-index: 1;
+}
+.star {
+    display: inline-block;
+    top: -30px;
+    opacity: 0; /* Começa invisível */
+    animation-duration: 1s;
+    animation-fill-mode: forwards; /* Mantém o estado final da animação */
+}
+
+/* Estilo específico para a estrela dourada */
+.medium {
+    position: absolute;
+    left: 35%;
+    transform: translateX(-50%);
+    animation-name: appear-gold;
+    animation-delay: 2s; 
+
+}
+
+/* Estilo específico para a estrela prata */
+.small {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    animation-name: appear-silver;
+    animation-delay: 1s; /* Aparece após a bronze */
+}
+
+/* Estilo específico para a estrela bronze */
+
+/* Animações */
+@keyframes appear-bronze {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes appear-silver {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes appear-gold {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+@keyframes moviment{
+    0%, 100% {
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.05);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+/* Estilos para o troféu */
+.trophy {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-top: 10px;
+    animation-name: swing;
+    animation-duration: 2s; /* Adiciona a animação de balanço */
+}
+
+.trophy-icon img {
+    width: 200px;
+}
+
+/* Animação de balanço */
+@keyframes swing {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(20deg);
+    }
+    50%{
+        transform: rotate(-20deg);
+    }
+    100%{
+        transform: rotate(0deg);;
+    }
+}
+
+/* Estilos para o botão */
+.test-button {
+    margin-top: 30px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.test-button:hover {
+    background-color: #0056b3;
+}
+
+/* Ajustes de imagem das estrelas */
+.star img {
+    width: 100px; /* Tamanho padrão das estrelas */
+}
+
+.big img {
+    width: 100px; /* Estrela dourada maior */
+}
+
+.small img {
+    width: 100px; /* Estrela prata menor */
+}
+
+.medium img {
+    width: 100px; /* Estrela bronze intermediária */
+}
+
+/* Estilos para os confetes */
+@keyframes confetti-fall {
+    to {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+.confetti {
+    position: absolute;
+    width: 20px; /* Tamanho maior dos confetes */
+    height: 20px;
+    background: #f39c12;
+    opacity: 0.9;
+    animation: confetti-fall 3s infinite;
+    pointer-events: none;
+}
+
+.confetti:nth-child(odd) {
+    background: #e74c3c;
+}
+
+.confetti:nth-child(3n) {
+    background: #2ecc71;
+}
+
+.confetti:nth-child(4n) {
+    background: #3498db;
+}
+
+/* Ajustes para telas menores */
+@media (max-width: 670px) {
+    .star img {
+        width: 80px; /* Ajuste o tamanho das estrelas */
+        top: -100px;
+    }
+    
+    .trophy {
+        margin-top: 10px;
+    }
+    
+    .test-button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .star img {
+        width: 60px; /* Ajuste o tamanho das estrelas para telas muito pequenas */
+    }
+    
+    .trophy-icon img {
+        width: 115px;
+    }
+    
+    .test-button {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}
+
+.atom, .molecule {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    opacity: 0.6;
+    animation: float 15s infinite ease-in-out;
+}
+
+.atom {
+    width: 50px;
+    height: 50px;
+    background: #ffcc00;
+    top: 20%;
+    left: 30%;
+}
+
+.molecule {
+    width: 80px;
+    height: 80px;
+    background: #ff6600;
+    top: 50%;
+    left: 60%;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px) translateX(0px);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translateY(-30px) translateX(30px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0px) translateX(0px);
+        opacity: 0.7;
+    }
+}
+.atom img{
+    width: 50px;
+    height: 50px;
+}
+
+.molecule img{
+    width: 80px;
+    height: 80px;
+}
+.atom:nth-child(1) {
+    animation-duration: 10s;
+    top: 10%;
+    left: 40%;
+}
+
+.molecule:nth-child(2) {
+    animation-duration: 20s;
+    top: 30%;
+    left: 70%;
+}
+
+.atom:nth-child(3) {
+    animation-duration: 15s;
+    top: 60%;
+    left: 20%;
+}
+
+.molecule:nth-child(4) {
+    animation-duration: 12s;
+    top: 80%;
+    left: 50%;
+}
+
+.atom:nth-child(5) {
+    animation-duration: 18s;
+    top: 40%;
+    left: 10%;
+}
+
+.score-container {
+    text-align: center;
+    margin: 20px 0;
+    color: #333;
+}
+
+#finalScore {
+    font-size: 24px;
+    font-weight: bold;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="stars">
+            <span class="star medium bronze">
+                <img src="../imagens de alternativas/proudness.png" alt="">
+            </span>
+        </div>
+
+        <div class="score-container">
+            <h2>Todo mundo começa de <br> algum lugar.</h2>
+            <p id="finalScore">0</p>
+        </div>
+        
+        <div class="trophy">
+            <span class="trophy-icon">
+                <img src="../imagens de alternativas/winner-1.png" alt="">
+            </span>
+        </div>
+        <button class="test-button" onclick="window.location.href='../topico.html'">TESTAR OUTROS TÓPICOS 😎 🧪</button>
+    </div>
+    <div class="background">
+        <div class="atom">
+            <img src="../imagens de alternativas/dioxido-trans.png" alt="">
+        </div>
+
+        <div class="molecule">
+            <img src="../imagens de alternativas/nitroso-trans.png" alt="">
+        </div>
+
+        <div class="atom">
+            <img src="../imagens de alternativas/dioxido-car-trans.png" alt="">
+        </div>
+
+        <div class="molecule">
+            <img src="../imagens de alternativas/monoxido-trans.png" alt="">
+        </div>
+
+        <div class="atom">
+            <img src="../imagens de alternativas/dioxido-enx-trans.png" alt="">
+        </div>
+    </div>
+    <script>
+// Função para criar confetes
+function createConfetti() {
+    const confettiContainer = document.createElement('div');
+    confettiContainer.className = 'confetti-container';
+    document.body.appendChild(confettiContainer);
+
+    const numberOfConfetti = 100;
+    for (let i = 0; i < numberOfConfetti; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = `${Math.random() * 100}vw`;
+        confetti.style.top = `${Math.random() * -100}vh`; // Começa acima da tela
+        confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
+        confetti.style.animationDelay = `${Math.random() * 5}s`;
+        confettiContainer.appendChild(confetti);
+    }
+
+    // Remove os confetes após a animação
+    setTimeout(() => {
+        document.body.removeChild(confettiContainer);
+    }, 7000); // Tempo suficiente para garantir que os confetes terminem a animação
+}
+
+// Adiciona os confetes quando a página carrega
+window.addEventListener('load', createConfetti);
+
+// Recupera o valor de acertos e perguntas respondidas do localStorage
+const correctCount = parseInt(localStorage.getItem('correctCount')) || 0;
+const totalAnswered = parseInt(localStorage.getItem('totalAnswered')) || 0;
+
+// Obtém o elemento onde a pontuação será exibida
+const finalScoreElement = document.getElementById('finalScore');
+
+// Atualiza o texto ado elemento com a pontuação final
+finalScoreElement.textContent = `Acertos: ${correctCount} de ${totalAnswered}`;
+
+
+    </script>
+</body>
+</html>
