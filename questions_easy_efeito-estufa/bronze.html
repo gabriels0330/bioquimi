@@ -38,6 +38,7 @@ body, html {
     justify-content: center;
     position: relative;
     margin-bottom: 10vw;
+    animation: moviment 2s infinite;
 }
 .container{
     z-index: 1;
@@ -51,13 +52,13 @@ body, html {
 }
 
 /* Estilo específico para a estrela dourada */
-.big {
+.medium {
     position: absolute;
-    top: -45px; /* Estrela dourada mais alta */
     left: 35%;
     transform: translateX(-50%);
     animation-name: appear-gold;
-    animation-delay: 2s; /* Aparece após a prata */
+    animation-delay: 2s; 
+
 }
 
 /* Estilo específico para a estrela prata */
@@ -70,12 +71,6 @@ body, html {
 }
 
 /* Estilo específico para a estrela bronze */
-.medium {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    animation-name: appear-bronze;
-}
 
 /* Animações */
 @keyframes appear-bronze {
@@ -92,6 +87,17 @@ body, html {
     from { opacity: 0; transform: scale(0.5); }
     to { opacity: 1; transform: scale(1); }
 }
+@keyframes moviment{
+    0%, 100% {
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.5);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
 
 /* Estilos para o troféu */
 .trophy {
@@ -99,7 +105,8 @@ body, html {
     justify-content: center;
     position: relative;
     margin-top: 10px;
-    animation: swing 2s infinite; /* Adiciona a animação de balanço */
+    animation-name: swing;
+    animation-duration: 2s; /* Adiciona a animação de balanço */
 }
 
 .trophy-icon img {
@@ -111,8 +118,14 @@ body, html {
     0%, 100% {
         transform: rotate(0deg);
     }
-    50% {
-        transform: rotate(10deg);
+    25% {
+        transform: rotate(20deg);
+    }
+    50%{
+        transform: rotate(-20deg);
+    }
+    100%{
+        transform: rotate(0deg);;
     }
 }
 
@@ -308,14 +321,6 @@ body, html {
             <span class="star medium bronze">
                 <img src="../imagens de alternativas/star-bronze_1.png" alt="">
             </span>
-
-            <span class="star small silver">
-                <img src="../imagens de alternativas/star_silver_1.png" alt="">
-            </span>
-
-            <span class="star big yellow">
-                <img src="../imagens de alternativas/star-gold-1.png" alt="">
-            </span>
         </div>
 
         <div class="score-container">
@@ -328,7 +333,7 @@ body, html {
                 <img src="../imagens de alternativas/winner-1.png" alt="">
             </span>
         </div>
-        <button class="test-button" onclick="testarConhecimentos()">TESTAR OUTROS CONHECIMENTOS</button>
+        <button class="test-button" onclick="window.location.href='../topico.html'">TESTAR OUTROS TÓPICOS 😎 🧪</button>
     </div>
     <div class="background">
         <div class="atom">
@@ -385,7 +390,7 @@ const totalAnswered = parseInt(localStorage.getItem('totalAnswered')) || 0;
 // Obtém o elemento onde a pontuação será exibida
 const finalScoreElement = document.getElementById('finalScore');
 
-// Atualiza o texto do elemento com a pontuação final
+// Atualiza o texto ado elemento com a pontuação final
 finalScoreElement.textContent = `Acertos: ${correctCount} de ${totalAnswered}`;
 
 
