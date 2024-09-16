@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             nextButton.textContent = 'PRÓXIMO';
         } else {
-            if (totalAnswered >= 15) {
+            if (totalAnswered == 15) {
                 // Todas as perguntas foram respondidas, redireciona para a página apropriada
                 if (correctCount <= 5) {
                     window.location.href = 'tentativa.html';
