@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let selectedCard = null;
     let questionChecked = false; // Estado para verificar se a pergunta já foi conferida
-
+    let nextButtonClicked = false;
     // Função para obter o nome do arquivo da URL atual
     const getFileNameFromUrl = () => {
         const url = window.location.pathname;
@@ -84,6 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!questionChecked) {
             questionChecked = true; // Marca a pergunta como conferida
+            nextButtonClicked = true; // Marca que o botão foi clicado
+            
 
             // Incrementa o contador de questões respondidas
             totalAnswered++;
