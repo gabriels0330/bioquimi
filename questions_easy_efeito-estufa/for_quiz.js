@@ -145,6 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             nextButton.textContent = 'PRÓXIMO';
+            nextCliked = true;
         } else {
             if (totalAnswered == 15) {
                 // Todas as perguntas foram respondidas, redireciona para a página apropriada
@@ -169,7 +170,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.location.href = `e_f_q_${questionNumber}_f.html`;
             }
         }
-        nextCliked = true;
     });
 
     // Manipulador para eventos de navegação
