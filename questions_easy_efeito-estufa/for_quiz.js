@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let selectedCard = null;
     let questionChecked = false; // Estado para verificar se a pergunta já foi conferida
-
+    let nextClicked = false;
+    
     // Função para obter o nome do arquivo da URL atual
     const getFileNameFromUrl = () => {
         const url = window.location.pathname;
@@ -65,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     cards.forEach(card => {
         card.addEventListener('click', () => {
             if (questionChecked) return; // Não permite alterar a seleção após a conferência
-
+            
             if (selectedCard) {
                 selectedCard.classList.remove('selected');
             }
@@ -80,6 +81,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     nextButton.addEventListener('click', () => {
+        if (nextCliked) return;
+        nextCliked = true;
         if (!selectedCard) return;
 
         if (!questionChecked) {
