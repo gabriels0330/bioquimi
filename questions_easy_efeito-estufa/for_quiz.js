@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let selectedCard = null;
     let questionChecked = false; // Estado para verificar se a pergunta já foi conferida
-    let nextClicked = false;
+    let nextCount = 0;
     
     // Função para obter o nome do arquivo da URL atual
     const getFileNameFromUrl = () => {
@@ -81,93 +81,99 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     nextButton.addEventListener('click', () => {
-        if (nextClicked) return;
-        if (!selectedCard) return;
+        nextCount++;
+        if (nextCount === 1){
 
-        if (!questionChecked) {
-            questionChecked = true; // Marca a pergunta como conferida
+        
+            if (!selectedCard) return;
 
-            // Incrementa o contador de questões respondidas
-            totalAnswered++;
-            totalAnsweredElement.textContent = totalAnswered;
-            localStorage.setItem('totalAnswered', totalAnswered);
+            if (!questionChecked) {
+                questionChecked = true; // Marca a pergunta como conferida
 
-            explain.style.display = "block";
+                // Incrementa o contador de questões respondidas
+                totalAnswered++;
+                totalAnsweredElement.textContent = totalAnswered;
+                localStorage.setItem('totalAnswered', totalAnswered);
 
-            const isCorrect = selectedCard.getAttribute('data-answer') === 'correct';
-            if (isCorrect) {
-                selectedCard.classList.add('correct');
-                // Incrementa o contador de acertos
-                correctCount++;
-                correctCountElement.textContent = correctCount;
-                localStorage.setItem('correctCount', correctCount);
+                explain.style.display = "block";
 
-                nextButton.style.backgroundColor = 'rgb(51, 167, 51)';
-                nextButton.style.borderBottom = '5px solid rgb(0, 51, 0)';
+                const isCorrect = selectedCard.getAttribute('data-answer') === 'correct';
+                if (isCorrect) {
+                    selectedCard.classList.add('correct');
+                    // Incrementa o contador de acertos
+                    correctCount++;
+                    correctCountElement.textContent = correctCount;
+                    localStorage.setItem('correctCount', correctCount);
 
-                // Adiciona a bola ao container
-                bolaContainer.innerHTML = `
-                    <div class="bola">
-                        <div class="checked">✓</div>
-                    </div>
-                `;
-                // Toca o áudio correto
-                audioCorrect.play();
-            } else {
-                selectedCard.classList.add('incorrect');
-                nextButton.style.backgroundColor = 'red';
-                nextButton.style.borderBottom = '5px solid rgb(164, 3, 3)';
+                    nextButton.style.backgroundColor = 'rgb(51, 167, 51)';
+                    nextButton.style.borderBottom = '5px solid rgb(0, 51, 0)';
 
-                // Adiciona o X ao container
-                bolaContainer.innerHTML = `
-                    <div class="erro">
-                        <div class="error-mark">✗</div>
-                    </div>
-                `;
-                // Toca o áudio incorreto
-                audioIncorrect.play();
-            }
+                    // Adiciona a bola ao container
+                    bolaContainer.innerHTML = `
+                        <div class="bola">
+                            <div class="checked">✓</div>
+                        </div>
+                    `;
+                    // Toca o áudio correto
+                    audioCorrect.play();
+                } else {
+                    selectedCard.classList.add('incorrect');
+                    nextButton.style.backgroundColor = 'red';
+                    nextButton.style.borderBottom = '5px solid rgb(164, 3, 3)';
 
-            cards.forEach(card => {
-                if (card !== selectedCard) {
-                    if (card.getAttribute('data-answer') === 'correct') {
-                        card.classList.add('correct');
-                    } else {
-                        card.classList.add('incorrect');
+                    // Adiciona o X ao container
+                    bolaContainer.innerHTML = `
+                        <div class="erro">
+                            <div class="error-mark">✗</div>
+                        </div>
+                    `;
+                    // Toca o áudio incorreto
+                    audioIncorrect.play();
+                }
+
+                cards.forEach(card => {
+                    if (card !== selectedCard) {
+                        if (card.getAttribute('data-answer') === 'correct') {
+                            card.classList.add('correct');
+                        } else {
+                            card.classList.add('incorrect');
+                        }
                     }
-                }
-                card.style.pointerEvents = 'none';
-            });
+                    card.style.pointerEvents = 'none';
+                });
 
-            // Adiciona a classe 'correct' ou 'incorrect' ao elemento .check
-            Array.from(sideBottom).forEach(check => {
-                check.classList.add(isCorrect ? 'correct' : 'incorrect');
-            });
+                // Adiciona a classe 'correct' ou 'incorrect' ao elemento .check
+                Array.from(sideBottom).forEach(check => {
+                    check.classList.add(isCorrect ? 'correct' : 'incorrect');
+                });
 
-            nextButton.textContent = 'PRÓXIMO';
-            nextClicked = true;
-        } else {
-            if (totalAnswered == 15) {
-                // Todas as perguntas foram respondidas, redireciona para a página apropriada
-                if (correctCount <= 5) {
-                    window.location.href = 'tentativa.html';
-                } else if (correctCount <= 10) {
-                    window.location.href = 'bronze.html';
-                } else if (correctCount <= 14) {
-                    window.location.href = 'prata.html';
-                } else if (correctCount == 15) {
-                    window.location.href = 'ouro.html';
-                }
+                nextButton.textContent = 'PRÓXIMO';
+        }
+
+        if(nextCount === 2){        
             } else {
-                // Incrementa o número da questão
-                questionNumber++;
-                localStorage.setItem('currentQuestionNumber', questionNumber);
+                if (totalAnswered == 15) {
+                    // Todas as perguntas foram respondidas, redireciona para a página apropriada
+                    if (correctCount <= 5) {
+                        window.location.href = 'tentativa.html';
+                    } else if (correctCount <= 10) {
+                        window.location.href = 'bronze.html';
+                    } else if (correctCount <= 14) {
+                        window.location.href = 'prata.html';
+                    } else if (correctCount == 15) {
+                        window.location.href = 'ouro.html';
+                    }
+                } else {
+                    // Incrementa o número da questão
+                    questionNumber++;
+                    localStorage.setItem('currentQuestionNumber', questionNumber);
 
-                // Adiciona o número da questão no histórico
-                history.pushState({ questionNumber }, '', `e_f_q_${questionNumber}_f.html`);
+                    // Adiciona o número da questão no histórico
+                    history.pushState({ questionNumber }, '', `e_f_q_${questionNumber}_f.html`);
 
-                // Redireciona para a próxima página
-                window.location.href = `e_f_q_${questionNumber}_f.html`;
+                    // Redireciona para a próxima página
+                    window.location.href = `e_f_q_${questionNumber}_f.html`;
+                }
             }
         }
     });
