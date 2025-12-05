@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     nextButton.addEventListener('click', () => {
-        if (nextCliked) return;
+        if (nextClicked) return;
         if (!selectedCard) return;
 
         if (!questionChecked) {
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             nextButton.textContent = 'PRÓXIMO';
-            nextCliked = true;
+            nextClicked = true;
         } else {
             if (totalAnswered == 15) {
                 // Todas as perguntas foram respondidas, redireciona para a página apropriada
