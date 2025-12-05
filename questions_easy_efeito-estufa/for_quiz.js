@@ -82,7 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     nextButton.addEventListener('click', () => {
         if (nextCliked) return;
-        nextCliked = true;
         if (!selectedCard) return;
 
         if (!questionChecked) {
@@ -170,6 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.location.href = `e_f_q_${questionNumber}_f.html`;
             }
         }
+        nextCliked = true;
     });
 
     // Manipulador para eventos de navegação
