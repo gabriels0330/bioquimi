@@ -81,11 +81,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     nextButton.addEventListener('click', () => {
-        nextCount++;
-        if (nextCount === 1){
+        // Se não há carta selecionada, ignora (fluxo normal antes de confirmar)
+        if (!selectedCard) return;
 
-        
-            if (!selectedCard) return;
+        // ---------- 1º clique: conferir resposta ----------
+        if (nextCount === 0) {
+            nextCount = 1;
 
             if (!questionChecked) {
                 questionChecked = true; // Marca a pergunta como conferida
@@ -148,34 +149,50 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 nextButton.textContent = 'PRÓXIMO';
-        }
-
-        if(nextCount === 2){        
-            } else {
-                if (totalAnswered == 15) {
-                    // Todas as perguntas foram respondidas, redireciona para a página apropriada
-                    if (correctCount <= 5) {
-                        window.location.href = 'tentativa.html';
-                    } else if (correctCount <= 10) {
-                        window.location.href = 'bronze.html';
-                    } else if (correctCount <= 14) {
-                        window.location.href = 'prata.html';
-                    } else if (correctCount == 15) {
-                        window.location.href = 'ouro.html';
-                    }
-                } else {
-                    // Incrementa o número da questão
-                    questionNumber++;
-                    localStorage.setItem('currentQuestionNumber', questionNumber);
-
-                    // Adiciona o número da questão no histórico
-                    history.pushState({ questionNumber }, '', `e_f_q_${questionNumber}_f.html`);
-
-                    // Redireciona para a próxima página
-                    window.location.href = `e_f_q_${questionNumber}_f.html`;
-                }
             }
+
+            // Bloqueio curto para evitar clique involuntário imediato (usuário segurando o botão/ENTER)
+            nextButton.disabled = true;
+            nextButton.blur(); // remove foco para evitar ENTER disparando novamente
+            setTimeout(() => {
+                nextButton.disabled = false;
+            }, 350); // 350ms é um tempo seguro; ajuste se quiser
+
+            return;
         }
+
+        // ---------- 2º clique: avançar ----------
+        if (nextCount === 1) {
+            nextCount = 2;
+
+            if (totalAnswered == 15) {
+                // Todas as perguntas foram respondidas, redireciona para a página apropriada
+                if (correctCount <= 5) {
+                    window.location.href = 'tentativa.html';
+                } else if (correctCount <= 10) {
+                    window.location.href = 'bronze.html';
+                } else if (correctCount <= 14) {
+                    window.location.href = 'prata.html';
+                } else if (correctCount == 15) {
+                    window.location.href = 'ouro.html';
+                }
+            } else {
+                // Incrementa o número da questão
+                questionNumber++;
+                localStorage.setItem('currentQuestionNumber', questionNumber);
+
+                // Adiciona o número da questão no histórico
+                history.pushState({ questionNumber }, '', `e_f_q_${questionNumber}_f.html`);
+
+                // Redireciona para a próxima página
+                window.location.href = `e_f_q_${questionNumber}_f.html`;
+            }
+
+            return;
+        }
+
+        // Qualquer clique extra (nextCount > 1) será ignorado
+        return;
     });
 
     // Manipulador para eventos de navegação
